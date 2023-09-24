@@ -2,6 +2,7 @@ package main
 
 import (
 	"os/exec"
+	"runtime"
 
 	"shinxey.go-fractal/coloring"
 	"shinxey.go-fractal/fractal/mandelbrot"
@@ -9,8 +10,10 @@ import (
 )
 
 func main() {
-    width := 2000
-    height := 2000
+    runtime.GOMAXPROCS(runtime.NumCPU())
+
+    width := 4000
+    height := 4000
     iters := 200
 
     result := mandelbrot.Draw(width, height, iters)

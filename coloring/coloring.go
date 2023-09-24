@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-func (palette *Palette) Color3(pixelValue float64, iterations int) PaletteColor {
+func (palette *Palette) Color(pixelValue float64, iterations int) PaletteColor {
     if palette == nil {
         return Black
     }
