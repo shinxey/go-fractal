@@ -8,7 +8,7 @@ import (
 	"shinxey.go-fractal/coloring"
 )
 
-func WriteToFile(filename string, fractal []byte, width int, height int, iters byte, palette coloring.Palette) {
+func WriteToFile(filename string, fractal []float64, width int, height int, iters int, palette coloring.Palette) {
     upLeft := image.Point{0, 0}
     lowRight := image.Point{width, height}
 

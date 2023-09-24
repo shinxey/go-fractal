@@ -1,22 +1,26 @@
 package mandelbrot
 
-func Draw(width int, height int, iters byte) []byte {
-    result := make([]byte, width * height)
+func Draw(width int, height int, iters int) []float64 {
+    result := make([]float64, width * height)
 
-    fHeight := float32(height)
-    fWidth := float32(width)
+    fHeight := float64(height)
+    fWidth := float64(width)
 
     for x := 0; x < width; x++ {
         for y := 0; y < height; y++ {
-            x0 := -2 + 4 / fWidth * float32(x)
-            y0 := -2 + 4 / fHeight * float32(y)
+            x0 := -1.167 + 0.0005 / fWidth * float64(x)
+            y0 := 0.235 + 0.0005 / fHeight * float64(y)
 
-            var xn float32 = 0
-            var yn float32 = 0
+            var xn float64 = 0
+            var yn float64 = 0
 
-            doneIters := byte(0)
+            doneIters := 0
  
-            for k := byte(0); k < iters; k++ {
+            for k := 0; k < iters; k++ {
+                if xn * xn + yn * yn > 4 {
+                    break
+                }
+
                 xn1 := xn * xn - yn * yn + x0
                 yn1 := 2 * xn * yn + y0
 
@@ -24,13 +28,9 @@ func Draw(width int, height int, iters byte) []byte {
                 yn = yn1
 
                 doneIters += 1
-
-                if xn * xn + yn + yn > 4 {
-                    break
-                }
             }
 
-            result[y * height + x] = doneIters
+            result[y * height + x] = float64(doneIters)
         }
     }
 
