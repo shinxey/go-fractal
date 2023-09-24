@@ -1,7 +1,7 @@
 package mandelbrot
 
-func Draw(width int, height int, iters int) []int {
-    result := make([]int, width * height)
+func Draw(width int, height int, iters byte) []byte {
+    result := make([]byte, width * height)
 
     fHeight := float32(height)
     fWidth := float32(width)
@@ -14,9 +14,9 @@ func Draw(width int, height int, iters int) []int {
             var xn float32 = 0
             var yn float32 = 0
 
-            doneIters := 0
+            doneIters := byte(0)
  
-            for k := 0; k < iters; k++ {
+            for k := byte(0); k < iters; k++ {
                 xn1 := xn * xn - yn * yn + x0
                 yn1 := 2 * xn * yn + y0
 
